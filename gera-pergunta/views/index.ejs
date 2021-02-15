@@ -11,7 +11,23 @@
 <body>
   <h1>Bem vindo ao Gera Pergunta!</h1>
   <hr>
-  <h2>Lista de Perguntas</h2>
+  <h3>Lista de Perguntas</h3>
+  <%= name %>
+  <%= lang %>
+  <%= company %>
+  <%= subscribers %>
+
+  <% if(msg){ %>
+    <h3> Erro encontrado </h3>
+  <% } else {%> 
+    <h3> Nenhum erro encontrado </h3>
+  <% } %>
+
+  <% products.forEach(function(product){ %> 
+    <hr>
+    <h3><%= product.name %></h3>
+    <h4><%= product.price %></h4>
+  <% }) %> 
 </body>
 
 </html>

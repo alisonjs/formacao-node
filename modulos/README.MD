@@ -1,6 +1,6 @@
 # Módulo em NodeJS
 
-Projeto criado para ilustrar a utilização de módulo em Nodejs
+Projeto criado para ilustrar a utilização de módulos em Nodejs
 
 ## Executando o projeto no terminal
 

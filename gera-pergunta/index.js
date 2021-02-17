@@ -1,39 +1,26 @@
-const { response } = require('express');
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
 app.set('view engine', 'ejs');
 
-app.get('/:name/:lang', (req, res) => {
-  const name = req.params.name;
-  const lang = req.params.lang;
-  const msg = false;
-  const products = [
-    { name: 'Cereal', price: 5.69 },
-    { name: 'Meat', price: 56 },
-    { name: 'Watter', price: 4 },
-    { name: 'Mint', price: 4 },
-    { name: 'Banana', price: 8 },
-    { name: 'Nuts', price: 12 },
-  ];
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-  res.render('index', {
-    name,
-    lang,
-    company: 'Uniquati',
-    subscribers: 8000,
-    msg,
-    products,
-  });
+app.get('/', (req, res) => {
+  res.render('index');
 });
 
-app.get('/home', (req, res) => {
-  res.render('home');
+app.get('/ask', (req, res) => {
+  res.render('ask');
 });
 
-app.get('/principal/profile', (req, res) => {
-  res.render('principal/profile');
+app.post('/question', (req, res) => {
+  const title = req.body.title;
+  const description = req.body.description;
+  res.send(`Title: ${title} and Description: ${description}`);
 });
 
 app.listen(3000, () => {

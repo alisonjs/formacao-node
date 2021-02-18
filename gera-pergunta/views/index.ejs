@@ -3,7 +3,30 @@
   <%- include('partials/header.ejs') %>
 <body class="bg-light">
   <%- include('partials/navbar.ejs') %>
-  <h1>Bem vindo ao Gera Pergunta!</h1>
+  
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col"><h1>Perguntas</h1></div>
+      <div class="col"><a href="/ask" class="btn btn-primary"> Perguntar </a></div>
+    </div>
+
+    <% questions.forEach(question => { %>
+
+      <div class="card mt-4">
+
+        <div class="card-body">
+          <h4 class="card-title"><%= question.title %></h4>
+          <div class="card-text text-truncate"><%= question.description %></div>
+        </div>
+        <div class="card-footer">
+          <a href="/question/<%= question.id %>" class="btn btn-primary">Responder <i class="bi bi-chat-right-text-fill"></i></a>
+        </div>
+      </div>
+
+    <%})%>
+
+  </div>
+
 </body>
 <%- include('partials/footer.ejs') %>
 </html>

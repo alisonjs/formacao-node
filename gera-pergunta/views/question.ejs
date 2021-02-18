@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/header.ejs') %>
+<body class="bg-light">
+  <%- include('partials/navbar.ejs') %>
+  <div class="container">
+      <h1 class="mt-4"><%= question.title %></h1>
+      <p class="mt-4"><%= question.description %></p>
+      <hr class="my-4">
+      <form action="/answer" method="POST">
+        <div class="form-group">
+            <label>Resposta:</label>
+            <textarea placeholder="Insira sua resposta aqui" name="answer" class="form-control"></textarea>
+          </div>
+          <input type="hidden" name="question" value="<%= question.id %>">
+          <button type="submit" class="btn btn-primary">Responder</button>
+      </form>
+      <hr class="my-4">
+      <h3>Respostas</h3>
+      <hr class="my-4">
+      <% answers.forEach(answer => { %>
+        <div class="card mt-4">
+            <div class="card-body">
+                <p class="card-text"><%= answer.body %></p>
+                <p class="card-text"><small class="text-muted"><%= decorate(passed_time(now-answer.createdAt)) %></small></p>
+            </div>
+        </div>
+      <% }) %>
+  </div>
+</body>
+<%- include('partials/footer.ejs') %>
+</html>

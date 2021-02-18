@@ -1,6 +1,19 @@
+require('dotenv/config');
 const express = require('express');
 const bodyParser = require('body-parser');
+const connection = require('./database/database');
 
+const questionModel = require("./database/Question");
+
+connection
+  .authenticate()
+  .then(()=> {
+    console.log("Conexão realizada com sucesso")
+  })
+  .catch((msgErro) => {
+    console.log(msgErro)
+  });
+const port = process.env.PORT || '3000';
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -23,6 +36,6 @@ app.post('/question', (req, res) => {
   res.send(`Title: ${title} and Description: ${description}`);
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log('App running');
 });

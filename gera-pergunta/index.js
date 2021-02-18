@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const connection = require('./database/database');
 
-const questionModel = require("./database/Question");
+const Question = require("./database/Question");
 
 connection
   .authenticate()
@@ -13,7 +13,8 @@ connection
   .catch((msgErro) => {
     console.log(msgErro)
   });
-const port = process.env.PORT || '3000';
+
+const port = process.env.PORT;
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -23,7 +24,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.render('index');
+  Question.findAll({raw:true}).then((questions) => {
+    console.log(questions);
+    res.render("index", {questions: questions});
+  })
 });
 
 app.get('/ask', (req, res) => {
@@ -31,10 +35,16 @@ app.get('/ask', (req, res) => {
 });
 
 app.post('/question', (req, res) => {
-  const title = req.body.title;
-  const description = req.body.description;
-  res.send(`Title: ${title} and Description: ${description}`);
-});
+    const title = req.body.title;
+    const description = req.body.description;
+    Question.create({
+      title:title,
+      description:description
+    }).then(()=>{
+      res.redirect("/");
+    })
+  }
+);
 
 app.listen(port, () => {
   console.log('App running');

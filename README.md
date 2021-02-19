@@ -9,24 +9,8 @@ Repositório criado para armazenar os projetos desenvolvidos durante a Formaçã
 
 ## Projetos
 
-- `hw` projeto Hello World com Nodejs
-- `http` projeto utilizando pacote http do Nodejs
-- `modulos` projeto ilustrando funções e módulos Nodejs
-- `express` projeto utilizando pacote express
-- `gera-pergunta` aplicativo de perguntas e respostas
-
-## Executando o projeto no terminal
-
-```bash
-# no diretório do projeto
-npm start
-```
-## Requisitos
-
-```code
-MySql
-Express
-Knex
-Bootstrap
-EJS
-```
+- [`hw`](./hw) projeto Hello World com Nodejs
+- [`http`](./http) projeto utilizando pacote http do Nodejs
+- [`modulos`](./modulos) projeto ilustrando funções e módulos Nodejs
+- [`express`](./express) projeto utilizando pacote express
+- [`gera-pergunta`](./gera-pergunta) aplicativo de perguntas e respostas

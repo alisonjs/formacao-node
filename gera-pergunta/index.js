@@ -32,8 +32,11 @@ app.get('/', (req, res) => {
   Question.findAll({raw:true, order:[
     ['id','DESC']
   ]}).then((questions) => {
-    console.log(questions);
-    res.render("index", {questions: questions});
+    res.render("index", {
+      questions: questions,
+      now: new Date(),
+      decorate: decorate,
+      passed_time: passed_time});
   })
 });
 
@@ -60,7 +63,8 @@ app.get('/question/:id', (req, res)=>{
   }).then(question => {
     if(question != undefined){
       Answer.findAll({
-        where: {questionId:question.id}
+        where: {questionId:question.id},
+        order:[['id', 'DESC']]
       }).then((answers)=>{
         res.render('question', {
           question:question,

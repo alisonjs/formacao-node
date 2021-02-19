@@ -19,10 +19,10 @@
       <h3>Respostas</h3>
       <hr class="my-4">
       <% answers.forEach(answer => { %>
-        <div class="card mt-4">
+        <div class="card my-4">
             <div class="card-body">
                 <p class="card-text"><%= answer.body %></p>
-                <p class="card-text"><small class="text-muted"><%= decorate(passed_time(now-answer.createdAt)) %></small></p>
+                <p class="card-text"><small class="text-muted"><%= decorate(passed_time(now - new Date(answer.createdAt))) %></small></p>
             </div>
         </div>
       <% }) %>

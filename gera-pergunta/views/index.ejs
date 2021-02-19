@@ -10,20 +10,24 @@
       <div class="col"><a href="/ask" class="btn btn-primary"> Perguntar </a></div>
     </div>
 
+    <% if(questions.length > 0){  %>
     <% questions.forEach(question => { %>
 
-      <div class="card mt-4">
+      <div class="card my-4">
 
         <div class="card-body">
           <h4 class="card-title"><%= question.title %></h4>
           <div class="card-text text-truncate"><%= question.description %></div>
+          <p class="card-text"><small class="text-muted"><%= decorate(passed_time(now - new Date(question.createdAt))) %></small></p>
         </div>
         <div class="card-footer">
           <a href="/question/<%= question.id %>" class="btn btn-primary">Responder <i class="bi bi-chat-right-text-fill"></i></a>
         </div>
       </div>
 
-    <%})%>
+    <%})} else { %>
+      <p class="mt-5"> sem perguntas cadastradas até o momento. </p>
+    <% } %>
 
   </div>
 

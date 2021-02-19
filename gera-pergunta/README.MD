@@ -4,8 +4,17 @@ Aplicação de perguntas e respostas semelhante ao yahoo respostas.
 
 ## Funcionalidades
 
-Cadastrar Perguntas
-Cadastrar Respostas
+- Cadastrar Perguntas
+- Cadastrar Respostas
+
+### Home
+![Home](./static/home-geraperguntas.png)
+
+### Cadastrar Perguntas
+![Questions](./static/question-geraperguntas.png)
+
+### Cadastrar Respostas
+![Answers](./static/answer-geraperguntas.png)
 
 ## Parâmetros
 
